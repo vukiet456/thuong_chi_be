@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Bảng Đánh Giá Điểm Tình Cảm Hàng Tháng ❤️</title>
+  </head>
+  <body>
+    <main class="container">
+      <div class="card">
+        <h1 class="main-title">Bảng Đánh Giá Điểm Tình Cảm 💖</h1>
+        <p class="subtitle">Tháng này anh thể hiện thế nào? Cùng chấm điểm nhé!</p>
+
+        <!-- Thang điểm chính -->
+        <div class="score-column-wrapper">
+          <span class="score-column-title">Thang Điểm Tình Cảm</span>
+          <div class="score-pink-card">
+            <div class="score-display">
+              <span id="current-score" class="score-current">100</span>
+              <span class="score-divider">/</span>
+              <span class="score-total">100</span>
+            </div>
+            <div class="progress-container">
+              <div class="progress-bar-fill" id="progress-bar"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button id="reset-btn" class="reset-btn">🔄 Reset điểm tháng hiện tại</button>
+        </div>
+
+        <!-- Nhóm điểm cộng -->
+        <section class="section">
+          <h2 class="section-title bonus-title">🟢 Nhóm Điểm Cộng (Tích lũy & Thưởng)</h2>
+          
+          <h3 class="category-title">1. Tinh tế & Sự quan tâm</h3>
+          <div class="btn-grid">
+            <button class="score-btn bonus" data-points="5" data-reason="Chủ động hỏi thăm hôm nay thế nào">
+              +5 | Hỏi thăm ngày làm việc/đi học
+            </button>
+            <button class="score-btn bonus" data-points="5" data-reason="Nhớ chi tiết nhỏ (dị ứng, đồ uống thích)">
+              +5 | Nhớ chi tiết nhỏ & sở thích
+            </button>
+            <button class="score-btn bonus" data-points="10" data-reason="Nhận ra sự thay đổi diện mạo/tâm trạng">
+              +10 | Nhận ra thay đổi diện mạo/tâm trạng
+            </button>
+          </div>
+
+          <h3 class="category-title">2. Điểm tựa & Sự chủ động</h3>
+          <div class="btn-grid">
+            <button class="score-btn bonus" data-points="10" data-reason="Đột nhiên xuất hiện đón/mua đồ ăn khi mệt">
+              +10 | Mua đồ ăn/trà sữa qua khi mệt
+            </button>
+            <button class="score-btn bonus" data-points="10" data-reason="Chủ động lên kế hoạch hẹn hò chi tiết">
+              +10 | Lên kế hoạch hẹn hò chi tiết
+            </button>
+            <button class="score-btn bonus" data-points="15" data-reason="Lắng nghe tâm sự, không phán xét">
+              +15 | Lắng nghe & đứng về phía cô ấy
+            </button>
+          </div>
+
+          <h3 class="category-title">3. Tuyệt chiêu đốn tim</h3>
+          <div class="btn-grid">
+            <button class="score-btn bonus" data-points="15" data-reason="Chuẩn bị quà nhỏ bất ngờ">
+              +15 | Quà nhỏ bất ngờ không nhân dịp gì
+            </button>
+            <button class="score-btn bonus" data-points="20" data-reason="Có mặt ngay lập tức khi thực sự cần">
+              +20 | Bận việc nhưng vẫn có mặt khi cần
+            </button>
+          </div>
+
+          <!-- Ô NHẬP ĐIỂM CỘNG TÙY CHỈNH -->
+          <div class="custom-input-box bonus-box">
+            <h4>➕ Khác (Cộng điểm tùy chỉnh)</h4>
+            <div class="input-group">
+              <input type="text" id="custom-bonus-reason" placeholder="Lý do cộng điểm (ví dụ: Gội đầu cho vơ)..." />
+              <input type="number" id="custom-bonus-points" placeholder="Điểm (+)" min="1" value="5" />
+              <button id="add-custom-bonus-btn" class="custom-btn bonus-add">Thêm điểm cộng</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Nhóm điểm trừ -->
+        <section class="section">
+          <h2 class="section-title penalty-title">🔴 Nhóm Điểm Trừ (Lỗi sai & Trừ điểm)</h2>
+
+          <h3 class="category-title">1. Lỗi nhẹ - Sự vô ý thường ngày</h3>
+          <div class="btn-grid">
+            <button class="score-btn penalty" data-points="-3" data-reason="Rep tin nhắn quá chậm không lý do">
+              -3 | Trả lời tin nhắn quá chậm
+            </button>
+            <button class="score-btn penalty" data-points="-5" data-reason="Thả tim/khen con gái khác công khai">
+              -5 | Thả tim/khen gái trên MXH
+            </button>
+            <button class="score-btn penalty" data-points="-5" data-reason="Chơi game/dùng điện thoại khi hẹn hò">
+              -5 | Bấm điện thoại liên tục khi hẹn hò
+            </button>
+          </div>
+
+          <h3 class="category-title">2. Lỗi trung bình - Thiếu tinh tế & Thất hứa</h3>
+          <div class="btn-grid">
+            <button class="score-btn penalty" data-points="-10" data-reason="Cho leo cây hoặc trễ hẹn >20p">
+              -10 | Cho leo cây / Trễ hẹn >20 phút
+            </button>
+            <button class="score-btn penalty" data-points="-10" data-reason="Quên lời hứa nhỏ">
+              -10 | Quên những lời đã hứa
+            </button>
+            <button class="score-btn penalty" data-points="-15" data-reason="Giận dỗi ngược lại khi được góp ý">
+              -15 | Giận dỗi ngược khi được góp ý
+            </button>
+          </div>
+
+          <h3 class="category-title">3. Lỗi nặng - Mất an toàn & Tổn thương</h3>
+          <div class="btn-grid">
+            <button class="score-btn penalty" data-points="-20" data-reason="Đi nhậu biến mất cả đêm không báo">
+              -20 | Đi nhậu mất tích cả đêm
+            </button>
+            <button class="score-btn penalty" data-points="-30" data-reason="Mập mờ với bạn khác giới">
+              -30 | Mập mờ với bạn khác giới
+            </button>
+            <button class="score-btn penalty" data-points="-50" data-reason="Quên ngày kỷ niệm / Sinh nhật">
+              -50 | Quên ngày kỷ niệm / Sinh nhật 🚨
+            </button>
+          </div>
+
+          <!-- Ô NHẬP ĐIỂM TRỪ TÙY CHỈNH -->
+          <div class="custom-input-box penalty-box">
+            <h4>➖ Khác (Trừ điểm tùy chỉnh)</h4>
+            <div class="input-group">
+              <input type="text" id="custom-penalty-reason" placeholder="Lý do trừ điểm (ví dụ: Không ngắt cầu giao)..." />
+              <input type="number" id="custom-penalty-points" placeholder="Điểm (-)" min="1" value="5" />
+              <button id="add-custom-penalty-btn" class="custom-btn penalty-add">Thêm điểm trừ</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Nhật ký đánh giá tháng hiện tại -->
+        <section class="history-section">
+          <h2 class="history-title">📜 Lịch Sử Đánh Giá Trong Tháng Này</h2>
+          <ul id="history-list" class="history-list">
+            <li class="empty-msg">Chưa có đánh giá nào trong tháng này.</li>
+          </ul>
+        </section>
+
+        <!-- NÚT LƯU BỰ TỔNG KẾT THÁNG -->
+        <section class="save-month-section">
+          <div class="month-selector-group">
+            <label for="save-month-input">📅 Chọn tháng cần lưu tổng kết:</label>
+            <input type="month" id="save-month-input" />
+          </div>
+          <button id="save-month-btn" class="big-save-btn">
+            💾 LƯU BẢNG ĐIỂM TỔNG KẾT THÁNG NÀY
+          </button>
+        </section>
+
+        <!-- KHO LƯU TRỮ LỊCH SỬ THEO CÁC THÁNG -->
+        <section class="monthly-archive-section">
+          <h2 class="history-title">📚 Kho Lưu Trữ Đánh Giá Theo Tháng</h2>
+          <div id="monthly-archive-list" class="archive-container">
+            <p class="empty-msg">Chưa có tháng nào được tổng kết lưu trữ.</p>
+          </div>
+        </section>
+
+      </div>
+    </main>
+
+    <!-- FIREBASE SDK & SCRIPT -->
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-database-compat.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
