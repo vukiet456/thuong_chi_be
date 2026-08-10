@@ -3,175 +3,133 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gửi chị, lời xin lỗi từ trái tim ❤️</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700;800&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="style.css" />
-    <title>Bảng Đánh Giá Điểm Tình Cảm Hàng Tháng ❤️</title>
   </head>
   <body>
-    <main class="container">
-      <div class="card">
-        <h1 class="main-title">Bảng Đánh Giá Điểm Tình Cảm 💖</h1>
-        <p class="subtitle">Tháng này anh thể hiện thế nào? Cùng chấm điểm nhé!</p>
+    <div class="stars-bg"></div>
 
-        <!-- Thang điểm chính -->
-        <div class="score-column-wrapper">
-          <span class="score-column-title">Thang Điểm Tình Cảm</span>
-          <div class="score-pink-card">
-            <div class="score-display">
-              <span id="current-score" class="score-current">100</span>
-              <span class="score-divider">/</span>
-              <span class="score-total">100</span>
-            </div>
-            <div class="progress-container">
-              <div class="progress-bar-fill" id="progress-bar"></div>
-            </div>
+    <main class="story-container">
+      <!-- BƯỚC 1: LỜI NHẮN VÀ LÁ THƯ TRÁI TIM -->
+      <section id="step-1" class="step-card active">
+        <h1 class="main-title">Gửi Chị... ❤️</h1>
+        <p class="subtitle">Có một điều quan trọng em muốn gửi đến chị.</p>
+
+        <div class="letter-box">
+          <div class="heart-seal">❤️</div>
+          <div class="letter-content">
+            <p>
+              "Em biết thời gian qua đã làm chị buồn và suy nghĩ nhiều. Em thực
+              sự rất hối hận vì những sơ suất của mình..."
+            </p>
           </div>
         </div>
 
-        <div class="actions">
-          <button id="reset-btn" class="reset-btn">🔄 Reset điểm tháng hiện tại</button>
+        <div class="cat-guide">
+          <div class="cat-avatar">🐱</div>
+          <div class="cat-bubble">
+            Chị ơi, bấm vào đây để xem tiếp nhé! Mèo sẽ dẫn đường cho chị ✨
+          </div>
         </div>
 
-        <!-- Nhóm điểm cộng -->
-        <section class="section">
-          <h2 class="section-title bonus-title">🟢 Nhóm Điểm Cộng (Tích lũy & Thưởng)</h2>
-          
-          <h3 class="category-title">1. Tinh tế & Sự quan tâm</h3>
-          <div class="btn-grid">
-            <button class="score-btn bonus" data-points="5" data-reason="Chủ động hỏi thăm hôm nay thế nào">
-              +5 | Hỏi thăm ngày làm việc/đi học
-            </button>
-            <button class="score-btn bonus" data-points="5" data-reason="Nhớ chi tiết nhỏ (dị ứng, đồ uống thích)">
-              +5 | Nhớ chi tiết nhỏ & sở thích
-            </button>
-            <button class="score-btn bonus" data-points="10" data-reason="Nhận ra sự thay đổi diện mạo/tâm trạng">
-              +10 | Nhận ra thay đổi diện mạo/tâm trạng
-            </button>
+        <button class="next-btn" onclick="goToStep(2)">
+          Tiếp theo 🐾
+        </button>
+      </section>
+
+      <!-- BƯỚC 2: CƠ THỂ VỚI TRÁI TIM DẪN LỐI -->
+      <section id="step-2" class="step-card">
+        <h2 class="step-title">Bên trong em...</h2>
+
+        <div class="body-illustration">
+          <div class="body-silhouette">
+            <div class="pulsing-heart" onclick="goToStep(3)">❤️</div>
           </div>
+        </div>
 
-          <h3 class="category-title">2. Điểm tựa & Sự chủ động</h3>
-          <div class="btn-grid">
-            <button class="score-btn bonus" data-points="10" data-reason="Đột nhiên xuất hiện đón/mua đồ ăn khi mệt">
-              +10 | Mua đồ ăn/trà sữa qua khi mệt
-            </button>
-            <button class="score-btn bonus" data-points="10" data-reason="Chủ động lên kế hoạch hẹn hò chi tiết">
-              +10 | Lên kế hoạch hẹn hò chi tiết
-            </button>
-            <button class="score-btn bonus" data-points="15" data-reason="Lắng nghe tâm sự, không phán xét">
-              +15 | Lắng nghe & đứng về phía cô ấy
-            </button>
+        <div class="cat-guide">
+          <div class="cat-avatar">🐾</div>
+          <div class="cat-bubble">
+            Chị hãy chạm vào trái tim đang đập ở ngực anh ấy xem sao nhé! 👇
           </div>
+        </div>
+      </section>
 
-          <h3 class="category-title">3. Tuyệt chiêu đốn tim</h3>
-          <div class="btn-grid">
-            <button class="score-btn bonus" data-points="15" data-reason="Chuẩn bị quà nhỏ bất ngờ">
-              +15 | Quà nhỏ bất ngờ không nhân dịp gì
-            </button>
-            <button class="score-btn bonus" data-points="20" data-reason="Có mặt ngay lập tức khi thực sự cần">
-              +20 | Bận việc nhưng vẫn có mặt khi cần
-            </button>
+      <!-- BƯỚC 3: CĂN PHÒNG TỐI VÀ ÁNH SÁNG CỦA CÔ ẮY -->
+      <section id="step-3" class="step-card dark-room-step">
+        <div class="dark-room">
+          <div class="boy-in-dark">👦</div>
+          <div class="girl-light-wrapper">
+            <div class="light-aura"></div>
+            <div class="girl-in-light">👧✨</div>
           </div>
+        </div>
 
-          <!-- Ô NHẬP ĐIỂM CỘNG TÙY CHỈNH -->
-          <div class="custom-input-box bonus-box">
-            <h4>➕ Khác (Cộng điểm tùy chỉnh)</h4>
-            <div class="input-group">
-              <input type="text" id="custom-bonus-reason" placeholder="Lý do cộng điểm (ví dụ: Gội đầu cho vơ)..." />
-              <input type="number" id="custom-bonus-points" placeholder="Điểm (+)" min="1" value="5" />
-              <button id="add-custom-bonus-btn" class="custom-btn bonus-add">Thêm điểm cộng</button>
-            </div>
+        <div class="room-text">
+          Nơi căn phòng tối tăm nhất, chị chính là ánh sáng duy nhất chiếu sáng
+          thế giới của em...
+        </div>
+
+        <div class="cat-guide">
+          <div class="cat-avatar">🐱</div>
+          <div class="cat-bubble">
+            Chị chính là ánh sáng ấm áp nhất đấy! Đi tiếp với Mèo nha~
           </div>
-        </section>
+        </div>
 
-        <!-- Nhóm điểm trừ -->
-        <section class="section">
-          <h2 class="section-title penalty-title">🔴 Nhóm Điểm Trừ (Lỗi sai & Trừ điểm)</h2>
+        <button class="next-btn" onclick="goToStep(4)">
+          Lời nhắn cuối 🐾
+        </button>
+      </section>
 
-          <h3 class="category-title">1. Lỗi nhẹ - Sự vô ý thường ngày</h3>
-          <div class="btn-grid">
-            <button class="score-btn penalty" data-points="-3" data-reason="Rep tin nhắn quá chậm không lý do">
-              -3 | Trả lời tin nhắn quá chậm
-            </button>
-            <button class="score-btn penalty" data-points="-5" data-reason="Thả tim/khen con gái khác công khai">
-              -5 | Thả tim/khen gái trên MXH
-            </button>
-            <button class="score-btn penalty" data-points="-5" data-reason="Chơi game/dùng điện thoại khi hẹn hò">
-              -5 | Bấm điện thoại liên tục khi hẹn hò
-            </button>
+      <!-- BƯỚC 4: LỜI NHẮN CUỐI & NÚT CẢM ƠN -->
+      <section id="step-4" class="step-card">
+        <h2 class="step-title">Lời Nhắn Tới Chị 💌</h2>
+
+        <div class="final-message-box">
+          <p>
+            Cảm ơn chị vì đã luôn bao dung, kiên nhẫn và ở bên em ngay cả khi em
+            chưa hoàn hảo. Em hứa sẽ lắng nghe, thay đổi và yêu thương chị
+            hiểu chuyện hơn mỗi ngày.
+          </p>
+        </div>
+
+        <div class="cat-guide cat-walking-anim">
+          <div class="cat-avatar">🐈</div>
+          <div class="cat-bubble">
+            Mèo đã dẫn chị đến đây rồi! Hãy bấm vào bên dưới nhé ❤️
           </div>
+        </div>
 
-          <h3 class="category-title">2. Lỗi trung bình - Thiếu tinh tế & Thất hứa</h3>
-          <div class="btn-grid">
-            <button class="score-btn penalty" data-points="-10" data-reason="Cho leo cây hoặc trễ hẹn >20p">
-              -10 | Cho leo cây / Trễ hẹn >20 phút
-            </button>
-            <button class="score-btn penalty" data-points="-10" data-reason="Quên lời hứa nhỏ">
-              -10 | Quên những lời đã hứa
-            </button>
-            <button class="score-btn penalty" data-points="-15" data-reason="Giận dỗi ngược lại khi được góp ý">
-              -15 | Giận dỗi ngược khi được góp ý
-            </button>
-          </div>
+        <button class="final-btn" onclick="goToStep(5)">
+          Cảm ơn chị vì đã ở đây ✨
+        </button>
+      </section>
 
-          <h3 class="category-title">3. Lỗi nặng - Mất an toàn & Tổn thương</h3>
-          <div class="btn-grid">
-            <button class="score-btn penalty" data-points="-20" data-reason="Đi nhậu biến mất cả đêm không báo">
-              -20 | Đi nhậu mất tích cả đêm
-            </button>
-            <button class="score-btn penalty" data-points="-30" data-reason="Mập mờ với bạn khác giới">
-              -30 | Mập mờ với bạn khác giới
-            </button>
-            <button class="score-btn penalty" data-points="-50" data-reason="Quên ngày kỷ niệm / Sinh nhật">
-              -50 | Quên ngày kỷ niệm / Sinh nhật 🚨
-            </button>
-          </div>
+      <!-- BƯỚC 5: MÀN HÌNH HAI TRÁI TIM ĐẬP CÙNG NHỊP -->
+      <section id="step-5" class="step-card final-love-step">
+        <h2 class="love-title">Hai Trái Tim Nhịp Đập</h2>
 
-          <!-- Ô NHẬP ĐIỂM TRỪ TÙY CHỈNH -->
-          <div class="custom-input-box penalty-box">
-            <h4>➖ Khác (Trừ điểm tùy chỉnh)</h4>
-            <div class="input-group">
-              <input type="text" id="custom-penalty-reason" placeholder="Lý do trừ điểm (ví dụ: Không ngắt cầu giao)..." />
-              <input type="number" id="custom-penalty-points" placeholder="Điểm (-)" min="1" value="5" />
-              <button id="add-custom-penalty-btn" class="custom-btn penalty-add">Thêm điểm trừ</button>
-            </div>
-          </div>
-        </section>
+        <div class="dual-hearts-container">
+          <div class="heart heart-left">💖</div>
+          <div class="heart-beat-line">⚡</div>
+          <div class="heart heart-right">💗</div>
+        </div>
 
-        <!-- Nhật ký đánh giá tháng hiện tại -->
-        <section class="history-section">
-          <h2 class="history-title">📜 Lịch Sử Đánh Giá Trong Tháng Này</h2>
-          <ul id="history-list" class="history-list">
-            <li class="empty-msg">Chưa có đánh giá nào trong tháng này.</li>
-          </ul>
-        </section>
+        <p class="love-footer-text">
+          Cảm ơn chị vì vẫn luôn ở đây cùng em! <br />Em yêu chị rất nhiều.
+        </p>
 
-        <!-- NÚT LƯU BỰ TỔNG KẾT THÁNG -->
-        <section class="save-month-section">
-          <div class="month-selector-group">
-            <label for="save-month-input">📅 Chọn tháng cần lưu tổng kết:</label>
-            <input type="month" id="save-month-input" />
-          </div>
-          <button id="save-month-btn" class="big-save-btn">
-            💾 LƯU BẢNG ĐIỂM TỔNG KẾT THÁNG NÀY
-          </button>
-        </section>
-
-        <!-- KHO LƯU TRỮ LỊCH SỬ THEO CÁC THÁNG -->
-        <section class="monthly-archive-section">
-          <h2 class="history-title">📚 Kho Lưu Trữ Đánh Giá Theo Tháng</h2>
-          <div id="monthly-archive-list" class="archive-container">
-            <p class="empty-msg">Chưa có tháng nào được tổng kết lưu trữ.</p>
-          </div>
-        </section>
-
-      </div>
+        <button class="restart-btn" onclick="goToStep(1)">🔄 Xem lại từ đầu</button>
+      </section>
     </main>
 
-    <!-- FIREBASE SDK & SCRIPT -->
-    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-database-compat.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
