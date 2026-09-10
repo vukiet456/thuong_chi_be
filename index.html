@@ -1,135 +1,212 @@
 <!DOCTYPE html>
 <html lang="vi">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Gửi chị, lời xin lỗi từ trái tim ❤️</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div class="stars-bg"></div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xin lỗi công chúa mà! ❤️</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+        }
 
-    <main class="story-container">
-      <!-- BƯỚC 1: LỜI NHẮN VÀ LÁ THƯ TRÁI TIM -->
-      <section id="step-1" class="step-card active">
-        <h1 class="main-title">Gửi Chị... ❤️</h1>
-        <p class="subtitle">Có một điều quan trọng em muốn gửi đến chị.</p>
+        .header {
+            text-align: center;
+            color: #d63384;
+            margin-bottom: 10px;
+        }
 
-        <div class="letter-box">
-          <div class="heart-seal">❤️</div>
-          <div class="letter-content">
-            <p>
-              "Em biết thời gian qua đã làm chị buồn và suy nghĩ nhiều. Em thực
-              sự rất hối hận vì những sơ suất của mình..."
-            </p>
-          </div>
-        </div>
+        .header h1 {
+            font-size: 2rem;
+            margin-bottom: 5px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
 
-        <div class="cat-guide">
-          <div class="cat-avatar">🐱</div>
-          <div class="cat-bubble">
-            Chị ơi, bấm vào đây để xem tiếp nhé! Mèo sẽ dẫn đường cho chị ✨
-          </div>
-        </div>
+        .header p {
+            font-size: 1.1rem;
+            color: #6c757d;
+        }
 
-        <button class="next-btn" onclick="goToStep(2)">
-          Tiếp theo 🐾
-        </button>
-      </section>
+        .hit-counter {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #dc3545;
+            background: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
 
-      <!-- BƯỚC 2: CƠ THỂ VỚI TRÁI TIM DẪN LỐI -->
-      <section id="step-2" class="step-card">
-        <h2 class="step-title">Bên trong em...</h2>
+        /* Khung chứa người que */
+        .stickman-container {
+            position: relative;
+            width: 220px;
+            height: 320px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
-        <div class="body-illustration">
-          <div class="body-silhouette">
-            <div class="pulsing-heart" onclick="goToStep(3)">❤️</div>
-          </div>
-        </div>
+        /* Hình vẽ người que SVG */
+        .stickman {
+            width: 100%;
+            height: 100%;
+            transition: transform 0.05s ease;
+        }
 
-        <div class="cat-guide">
-          <div class="cat-avatar">🐾</div>
-          <div class="cat-bubble">
-            Chị hãy chạm vào trái tim đang đập ở ngực anh ấy xem sao nhé! 👇
-          </div>
-        </div>
-      </section>
+        /* Hiệu ứng khi bị đánh */
+        .hit-animation {
+            animation: hitShake 0.25s ease-in-out;
+        }
 
-      <!-- BƯỚC 3: CĂN PHÒNG TỐI VÀ ÁNH SÁNG CỦA CÔ ẮY -->
-      <section id="step-3" class="step-card dark-room-step">
-        <div class="dark-room">
-          <div class="boy-in-dark">👦</div>
-          <div class="girl-light-wrapper">
-            <div class="light-aura"></div>
-            <div class="girl-in-light">👧✨</div>
-          </div>
-        </div>
+        @keyframes hitShake {
+            0% { transform: scale(1) rotate(0deg); }
+            20% { transform: scale(0.9) rotate(-12deg) translateY(10px); }
+            40% { transform: scale(1.05) rotate(10deg) translateY(-5px); }
+            60% { transform: scale(0.95) rotate(-5deg); }
+            100% { transform: scale(1) rotate(0deg); }
+        }
 
-        <div class="room-text">
-          Nơi căn phòng tối tăm nhất, chị chính là ánh sáng duy nhất chiếu sáng
-          thế giới của em...
-        </div>
+        /* Dòng chữ xin lỗi bay lên */
+        .apology-text {
+            position: absolute;
+            font-size: 0.95rem;
+            font-weight: bold;
+            color: #e63946;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 5px 12px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            pointer-events: none;
+            white-space: nowrap;
+            animation: floatUp 1.2s ease-out forwards;
+        }
 
-        <div class="cat-guide">
-          <div class="cat-avatar">🐱</div>
-          <div class="cat-bubble">
-            Chị chính là ánh sáng ấm áp nhất đấy! Đi tiếp với Mèo nha~
-          </div>
-        </div>
+        @keyframes floatUp {
+            0% {
+                opacity: 1;
+                transform: translateY(0) scale(0.8);
+            }
+            50% {
+                transform: translateY(-40px) scale(1.1);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-80px) scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
 
-        <button class="next-btn" onclick="goToStep(4)">
-          Lời nhắn cuối 🐾
-        </button>
-      </section>
+    <div class="header">
+        <h1>Tha lỗi cho anh nha! 🥺</h1>
+        <p>Ấn vào anh người que ở dưới để trút giận nè!</p>
+    </div>
 
-      <!-- BƯỚC 4: LỜI NHẮN CUỐI & NÚT CẢM ƠN -->
-      <section id="step-4" class="step-card">
-        <h2 class="step-title">Lời Nhắn Tới Chị 💌</h2>
+    <div class="hit-counter">
+        Đã ăn đòn: <span id="count">0</span> cái 💥
+    </div>
 
-        <div class="final-message-box">
-          <p>
-            Cảm ơn chị vì đã luôn bao dung, kiên nhẫn và ở bên em ngay cả khi em
-            chưa hoàn hảo. Em hứa sẽ lắng nghe, thay đổi và yêu thương chị
-            hiểu chuyện hơn mỗi ngày.
-          </p>
-        </div>
+    <div class="stickman-container" id="stickmanBox">
+        <svg class="stickman" id="stickman" viewBox="0 0 100 150" stroke="#333" stroke-width="4" stroke-linecap="round" fill="none">
+            <!-- Đầu người que -->
+            <circle cx="50" cy="30" r="18" fill="#fff" />
+            
+            <!-- Mắt tội lỗi (mắt xụm xuống) -->
+            <path d="M 43 28 L 47 30" stroke="#333" stroke-width="2" />
+            <path d="M 57 28 L 53 30" stroke="#333" stroke-width="2" />
+            <!-- Miệng mếu -->
+            <path d="M 44 38 Q 50 33 56 38" stroke="#333" stroke-width="2" fill="none" />
 
-        <div class="cat-guide cat-walking-anim">
-          <div class="cat-avatar">🐈</div>
-          <div class="cat-bubble">
-            Mèo đã dẫn chị đến đây rồi! Hãy bấm vào bên dưới nhé ❤️
-          </div>
-        </div>
+            <!-- Thân -->
+            <line x1="50" y1="48" x2="50" y2="95" />
 
-        <button class="final-btn" onclick="goToStep(5)">
-          Cảm ơn chị vì đã ở đây ✨
-        </button>
-      </section>
+            <!-- Tay (Co ro cầu xin) -->
+            <path d="M 50 60 L 35 75 L 45 80" />
+            <path d="M 50 60 L 65 75 L 55 80" />
 
-      <!-- BƯỚC 5: MÀN HÌNH HAI TRÁI TIM ĐẬP CÙNG NHỊP -->
-      <section id="step-5" class="step-card final-love-step">
-        <h2 class="love-title">Hai Trái Tim Nhịp Đập</h2>
+            <!-- Chân -->
+            <line x1="50" y1="95" x2="32" y2="135" />
+            <line x1="50" y1="95" x2="68" y2="135" />
+        </svg>
+    </div>
 
-        <div class="dual-hearts-container">
-          <div class="heart heart-left">💖</div>
-          <div class="heart-beat-line">⚡</div>
-          <div class="heart heart-right">💗</div>
-        </div>
+    <script>
+        const stickmanBox = document.getElementById('stickmanBox');
+        const stickman = document.getElementById('stickman');
+        const countDisplay = document.getElementById('count');
+        
+        let hitCount = 0;
 
-        <p class="love-footer-text">
-          Cảm ơn chị vì vẫn luôn ở đây cùng em! <br />Em yêu chị rất nhiều.
-        </p>
+        // Danh sách các câu xin lỗi ngọt ngào + hài hước
+        const apologyMessages = [
+            "Anh xin lỗi mà! 🥺",
+            "Đừng giận anh nữa nha ❤️",
+            "Anh biết lỗi rồi! 😭",
+            "Đánh thêm cái nữa cho chừa nè!",
+            "Anh hứa không tái phạm nữa đâu 💖",
+            "Yêu em nhất trên đời luôn! 💕",
+            "Nào, cười cái cho anh vui đi!",
+            "Anh xin lỗi em nhiều lắm!",
+            "Tha lỗi cho anh nha bé ơi 🥺",
+            "Đừng nhíu mày nữa, xấu lắm đó!",
+            "Anh bắt đầu thấy đau rồi nè 😂",
+            "Yêu em nhiều lắm lắm lắm!"
+        ];
 
-        <button class="restart-btn" onclick="goToStep(1)">🔄 Xem lại từ đầu</button>
-      </section>
-    </main>
+        stickmanBox.addEventListener('click', (e) => {
+            // Tăng số lượt đánh
+            hitCount++;
+            countDisplay.innerText = hitCount;
 
-    <script src="script.js"></script>
-  </body>
+            // Kích hoạt hiệu ứng lắc/nảy
+            stickman.classList.remove('hit-animation');
+            void stickman.offsetWidth; // Trigger reflow
+            stickman.classList.add('hit-animation');
+
+            // Tạo dòng chữ xin lỗi bay lên
+            createApologyText(e);
+        });
+
+        function createApologyText(event) {
+            const textElement = document.createElement('div');
+            textElement.classList.add('apology-text');
+
+            // Chọn ngẫu nhiên một câu xin lỗi
+            const randomMsg = apologyMessages[Math.floor(Math.random() * apologyMessages.length)];
+            textElement.innerText = randomMsg;
+
+            // Tính toán vị trí xuất hiện quanh điểm click
+            const rect = stickmanBox.getBoundingClientRect();
+            const x = event.clientX - rect.left + (Math.random() * 40 - 20);
+            const y = event.clientY - rect.top - 20;
+
+            textElement.style.left = `${x}px`;
+            textElement.style.top = `${y}px`;
+
+            stickmanBox.appendChild(textElement);
+
+            // Tự động xóa element sau khi hiệu ứng kết thúc
+            setTimeout(() => {
+                textElement.remove();
+            }, 1200);
+        }
+    </script>
+</body>
 </html>
